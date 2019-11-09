@@ -11,8 +11,8 @@
                 <methods>
                     <include name="TestLoginSuccess"/>
                 </methods>
-            </class>
         </classes>
+            </class>
 
     </test>
     <listeners>
