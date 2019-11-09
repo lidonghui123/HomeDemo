@@ -18,7 +18,7 @@
     <listeners>
         <listener class-name="org.uncommons.reportng.HTMLReporter"></listener>
         <listener class-name="org.uncommons.reportng.JUnitXMLReporter"></listener>
-        <listener class-name="com.mushishi.imooc.listener"></listener>
+        <listener class-name="com.mushishi.imooc.listener.TestCaseReport"></listener>
     </listeners>
 
 </suite>
