@@ -1,7 +1,8 @@
 package com.mushishi.imooc.page;
 
-import org.openqa.selenium.By;
+import com.mushishi.imooc.listener.ProUtil;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -10,19 +11,73 @@ public class BasePage {
     //实例化log4j
     static Logger logger=Logger.getLogger(BasePage.class);
     //声明driver
-    public WebDriver driver1;
+    public WebDriver driver;
     //构造方法,传入driver
     public BasePage(WebDriver driver){
-        //因为driver1是没有数值的，需要给它进行赋值
-        this.driver1=driver;
+        //因为driver1是没有数值，需要给它进行赋值
+        this.driver=driver;
+        //driver1 = new CoursePage(driver);
     }
+
     /**
      * Element方法封装
      */
     public WebElement GetElement(String key){
-        WebElement element = driver1.findElement(this.GetByLocal(key));
-        return  element;
+        boolean flag=true;
+        int i =0;
+        WebElement Element=null;
+        while(flag) {
+            try {
+                Element = driver.findElement(this.GetByLocal(key));
+                flag=false;
+
+            }
+            catch(Exception e) {
+                i=i+1;
+                if(i ==10) {
+                    flag=false;
+                }
+            }
+        }
+        return Element;
     }
+    /**
+     * 层级定位，通过父节点定位到子节点
+     * 需要传入父节点和子节点by
+     */
+    public WebElement nodeElement(String key,String nodekey){
+        logger.debug("层级定位"+nodekey);
+        WebElement element = driver.findElement(this.GetByLocal(key));
+        return element.findElement(this.GetByLocal(nodekey));
+    }
+
+    /**
+     * 层级定位，通过父节点定位到子节点
+     * 需要传入父节点和子节点by
+     */
+//    public WebElement nodeElement(By by,By nodeby){
+//        WebElement el = this.element(by);
+//        return  el.findElement(nodeby);
+//    }
+    /**
+     * 封装一个click点击
+     */
+    public void click(WebElement element){
+        //判断传入的是否存在
+        if(element != null){
+            element.click();
+        }else{
+            System.out.println("元素没有定位到，点击失败！"+element);
+        }
+    }
+    /**
+     * 获取文本信息
+     */
+    public String gettext(WebElement element){
+        return element.getText();
+    }
+
+
     /**
      * 元素定位类型封装
      */
@@ -55,7 +110,7 @@ public class BasePage {
      */
     public void MoveToElement(WebElement ToElement){
         //new action对象
-        Actions actions = new Actions(driver1);
+        Actions actions = new Actions(driver);
         //鼠标悬停在图片Elemet上面
         actions.moveToElement(ToElement).perform();
     }

@@ -4,10 +4,10 @@
            failures="0"
            errors="0"
            skipped="0"
-           time="2.456">
+           time="2.819">
   <properties />
   
   
-            <testcase name="TestLoginSuccess" time="2.456" classname="com.mushishi.imooc.runcase.LoginCase" />
+            <testcase name="TestLoginSuccess" time="2.819" classname="com.mushishi.imooc.runcase.LoginCase" />
       
 </testsuite>

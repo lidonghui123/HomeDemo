@@ -1,4 +1,4 @@
-package com.mushishi.imooc.page;
+package com.imooc.page;
 
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;

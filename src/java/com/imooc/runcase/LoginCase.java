@@ -1,18 +1,20 @@
-package com.mushishi.imooc.runcase;
+package com.imooc.runcase;
 
-import com.mushishi.imooc.handle.LoginHandle;
-import com.mushishi.imooc.listener.TestNGListenerScreen;
+import com.imooc.handle.LoginHandle;
+import com.imooc.listener.TestNGListenerScreen;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
+
 /**
  * @author 李博文
  * 登录
  */
 @Listeners({TestNGListenerScreen.class})
-public class LoginCase extends BaseCase{
+public class LoginCase extends BaseCase {
     //实例化log4j
     static Logger logger=Logger.getLogger(LoginCase.class);
     //全局变量
@@ -41,7 +43,7 @@ public class LoginCase extends BaseCase{
             e.printStackTrace();
         }
         //双11的推送弹窗
-        //driver.findElement(By.className("redrain-closeBtn")).click();
+        driver.findElement(By.className("redrain-closeBtn")).click();
         //new 一个loginHandle的对象
         loginHandle = new LoginHandle(driver);
         //点击登录按钮

@@ -13,7 +13,6 @@
                 </methods>
             </class>
         </classes>
-
     </test>
     <listeners>
         <listener class-name="org.uncommons.reportng.HTMLReporter"></listener>

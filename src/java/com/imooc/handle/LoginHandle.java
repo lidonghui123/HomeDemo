@@ -1,12 +1,9 @@
-package com.mushishi.imooc.handle;
+package com.imooc.handle;
 
-import com.mushishi.imooc.page.LoginPage;
+import com.imooc.page.LoginPage;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
-/**
- * 页面操作类
- */
 public class LoginHandle {
     //实例化log4j
     static Logger logger=Logger.getLogger(LoginHandle.class);
